@@ -1,8 +1,9 @@
 <div>
   <div>
     <h1>
-      List of all deliveries
+      Delivery Tracker
     </h1>
+    <p>Know if something gets lost in the mail.</p>
   </div>
 </div>
 
@@ -11,7 +12,7 @@
 <div>
   <div>
     <h2>
-      Add a new delivery
+     Expecting a package?
     </h2>
 
     <form action="/insert_delivery" method="post">
@@ -43,8 +44,7 @@
         <label for="details_box">
           Details
         </label>
-
-        <input type="text" id="details_box" name="query_details">
+        <textarea id="details_box" name="query_details" rows="3"></textarea>
       </div>
 
       <div>
@@ -104,6 +104,7 @@
       </tr>
 
       <% @list_of_deliveries.each do |a_delivery| %>
+      <li>
       <tr>
         <td>
           <%= a_delivery.id %>
@@ -142,6 +143,7 @@
           </a>
         </td>
       </tr>
+      </li>
       <% end %>
     </table>
   </div>

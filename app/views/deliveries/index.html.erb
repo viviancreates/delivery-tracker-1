@@ -40,21 +40,7 @@
         <textarea id="details_box" name="query_details" rows="3"></textarea>
       </div>
 
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
- <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
+      <input type ="hidden" name="query_arrived" value="false">
 
       <button>
         Log delivery
@@ -67,46 +53,11 @@
 <div class = "waiting_on">
 <h2>Waiting on</h2>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Delivery
-        </th>
-
-        <th>
-          Description
-        </th>
-
-        <th>
-          Supposed to arrive on
-        </th>
-
-        <th>
-          Details
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
+       
       <% @list_of_deliveries.each do |a_delivery| %>
-  
+   <ul>
+      <li>
+
       <tr>
         <td>
           <%= a_delivery.id %>
@@ -142,10 +93,12 @@
         </td>
       </tr>
     
+      </li>
+    </ul>
       <% end %>
-    </table>
   </div>
 </div>
+
 
 <hr>
 

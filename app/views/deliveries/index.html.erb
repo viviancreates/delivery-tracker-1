@@ -57,25 +57,23 @@
       <% @list_of_deliveries.each do |a_delivery| %>
    <ul>
       <li>
-
-      <div>
+        <div>
           <%= a_delivery.description %>
-      </div>
+        </div>
 
         <div>
           <p>Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></p>
         </div>
-
+        
         <div>
           <%= a_delivery.details %>
         </div>
-
+        
         <div>
-          <a href="/deliveries/<%= a_delivery.id %>">
-            Show details
-          </a>
-        </div>
-    
+          <button>
+            Mark as received
+          </button>
+        </div>   
       </li>
     </ul>
       <% end %>
@@ -87,8 +85,20 @@
 
 <div class = "received" >
 <h2>Received</h2>
-
-
-
-
+<div>
+       
+  <% @list_of_deliveries.each do |a_delivery| %>
+    <ul>
+      <li>
+        <div>
+        <%= a_delivery.description %>
+        </div>
+        <div>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+    
+  
+  </div>
 </div>

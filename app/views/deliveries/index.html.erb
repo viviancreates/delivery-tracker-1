@@ -58,36 +58,23 @@
    <ul>
       <li>
 
-      <tr>
-        <td>
+      <div>
           <%= a_delivery.description %>
-        </td>
+      </div>
 
-        <td>
+        <div>
           <p>Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></p>
-        </td>
+        </div>
 
-        <td>
+        <div>
           <%= a_delivery.details %>
-        </td>
+        </div>
 
-        <td>
-          <%= a_delivery.user_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_delivery.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_delivery.updated_at) %> ago
-        </td>
-
-        <td>
+        <div>
           <a href="/deliveries/<%= a_delivery.id %>">
             Show details
           </a>
-        </td>
-      </tr>
+        </div>
     
       </li>
     </ul>

@@ -35,20 +35,34 @@ class DeliveriesController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")
-    the_delivery = Delivery.where({ :id => the_id }).at(0)
-
-    the_delivery.description = params.fetch("query_description")
-    the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
-    the_delivery.details = params.fetch("query_details")
-    the_delivery.user_id = params.fetch("query_user_id")
-    the_delivery.arrived = params.fetch("query_arrived", true)
-
-    if the_delivery.valid?
-      the_delivery.save
-      redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
-    else
-      redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+    the_delivery = Delivery.find_by(id: the_id)
+  
+    if the_delivery.nil?
+      redirect_to deliveries_path, alert: "Delivery not found."
+      return
     end
+  
+    the_delivery.arrived = true
+  
+    if the_delivery.save
+      redirect_to deliveries_path, notice: "Delivery marked as received successfully."
+    else
+      redirect_to deliveries_path, alert: the_delivery.errors.full_messages.to_sentence
+    end
+    #the_delivery = Delivery.where({ :id => the_id }).at(0)
+
+    #the_delivery.description = params.fetch("query_description")
+    #the_delivery.supposed_to_arrive_on = params.fetch("query_supposed_to_arrive_on")
+    #the_delivery.details = params.fetch("query_details")
+    #the_delivery.user_id = params.fetch("query_user_id")
+    #the_delivery.arrived = params.fetch("query_arrived", true)
+
+    #if the_delivery.valid?
+      #the_delivery.save
+      #redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
+    #else
+      #redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+    #end
   end
 
   def destroy

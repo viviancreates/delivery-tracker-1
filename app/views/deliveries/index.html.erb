@@ -50,56 +50,59 @@
 </div>
 
 <hr>
-<div class = "waiting_on">
-<h2>Waiting on</h2>
+<div class="waiting_on">
+  <h2>Waiting on</h2>
   <div>
-       
+    <ul>
       <% @list_of_deliveries.each do |a_delivery| %>
-   <ul>
-      <li>
-        <div>
-          <%= a_delivery.description %>
-        </div>
+        <% if a_delivery.arrived == false %>
+          <li>
+            <form action="/deliveries/<%= a_delivery.id %>" method="post">
+          
+              
+              <div>
+                <%= a_delivery.description %>
+              </div>
 
-        <div>
-          <p>Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></p>
-        </div>
-        
-        <div>
-          <%= a_delivery.details %>
-        </div>
-        
-        <div>
-          <button>
-            Mark as received
-          </button>
-        </div>   
-      </li>
-    </ul>
+              <div>
+                <p>Supposed to arrive on <%= a_delivery.supposed_to_arrive_on %></p>
+              </div>
+              
+              <div>
+                <%= a_delivery.details %>
+              </div>
+              
+              <div>
+                <button type="submit">
+                  Mark as received
+                </button>
+              </div>
+            </form>
+          </li>
+        <% end %>
       <% end %>
+    </ul>
   </div>
 </div>
 
-
 <hr>
 
-<div class = "received" >
-<h2>Received</h2>
-<div>
-       
-  <% @list_of_deliveries.each do |a_delivery| %>
+<div class="received">
+  <h2>Received</h2>
+  <div>
     <ul>
-      <li>
-        <div>
-        <%= a_delivery.description %>
-        </div>
-        <div>
-         <a href="/delete_delivery/<%= a_delivery.id %>">Delete</a>
-        </div>
-      </li>
+      <% @list_of_deliveries.each do |a_delivery| %>
+        <% if a_delivery.arrived == true %>
+          <li>
+            <div>
+              <%= a_delivery.description %>
+            </div>
+            <div>
+              <a href="/delete_delivery/<%= a_delivery.id %>">Delete</a>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
     </ul>
-  <% end %>
-    
-  
   </div>
 </div>

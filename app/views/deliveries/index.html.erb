@@ -98,6 +98,9 @@
               <%= a_delivery.description %>
             </div>
             <div>
+            <%=  time_ago_in_words(Time.now) %>
+            </div>
+            <div>
               <a href="/delete_delivery/<%= a_delivery.id %>">Delete</a>
             </div>
           </li>
